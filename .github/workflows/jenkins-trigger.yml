@@ -1,9 +1,9 @@
-name: CI/CD with Jenkins
+name: Jenkins Pipeline Trigger
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   build:
@@ -12,5 +12,6 @@ jobs:
     steps:
     - name: Trigger Jenkins Pipeline
       run: |
-        curl -X POST https://1232-59-96-56-57.ngrok-free.app/github-webhook/
-        
+        curl -X POST https://https://1232-59-96-56-57.ngrok-free.app/github-webhook/ \
+          --user admin:11de4baf524896cba7d65283246dca4d6e \
+          --data-urlencode "payload={\"ref\":\"${GITHUB_REF}\",\"repository\":{\"name\":\"${GITHUB_REPOSITORY}\"}}"
